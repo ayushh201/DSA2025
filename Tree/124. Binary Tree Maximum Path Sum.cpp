@@ -16,11 +16,13 @@ public:
         if(root==nullptr) return 0;
         int l=solve(root->left);
         int r=solve(root->right);
-        int p1=l+r+root->val;
-        int p2=max(l,r)+root->val;
-        int p3=root->val;
-        maxSum=max({p1,p2,p3,maxSum});
-        return max(p3,p2);
+
+        int path1 = l+r+root->val;
+        int path2 = max(l,r)+root->val;
+        int path3 = root->val;
+
+        maxSum = max({maxSum,path1,path2,path3});
+        return max(path2,path3);
     }
     int maxPathSum(TreeNode* root) {
         maxSum=INT_MIN;
